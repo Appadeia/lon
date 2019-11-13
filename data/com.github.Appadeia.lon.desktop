@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Lon
+Comment=
+Icon=com.github.Appadeia.lon
+Exec=com.github.Appadeia.lon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;
+Keywords=app;vala;

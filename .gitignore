@@ -1,0 +1,7 @@
+build/*
+debian/build/*
+debian/com.github.Appadeia.lon.debhelper.log
+debian/com.github.Appadeia.lon.substvars
+debian/com.github.Appadeia.lon/
+debian/debhelper-build-stamp
+debian/files

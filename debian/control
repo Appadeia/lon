@@ -1,0 +1,14 @@
+Source: com.github.Appadeia.lon
+Section: x11
+Priority: extra
+Maintainer: Carson Black <uhhadd@gmail.com>
+Build-Depends: meson,
+               valac,
+               debhelper,
+               libgtk-3-dev
+
+Standards-Version: 3.9.3
+Package: com.github.Appadeia.lon
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: 
