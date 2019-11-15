@@ -3,6 +3,12 @@
 
     <gresource prefix="/com/github/Appadeia/lon/css">
         <file alias="style.css" compressed="true">css/style.css</file>
+        <file alias="cold.css" compressed="true">css/cold.css</file>
+        <file alias="hot.css" compressed="true">css/hot.css</file>
+        <file alias="mildcold.css" compressed="true">css/mildcold.css</file>
+        <file alias="mildhot.css" compressed="true">css/mildhot.css</file>
+        <file alias="verycold.css" compressed="true">css/verycold.css</file>
+        <file alias="veryhot.css" compressed="true">css/veryhot.css</file>
     </gresource>
 
     <gresource prefix="/com/github/Appadeia/lon/images">

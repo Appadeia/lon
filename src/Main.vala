@@ -72,6 +72,7 @@ public class Main {
             Gtk.main ();
         }
         else {
+            Hdy.init (ref args);
             var app = new Lon.Application ();
             app.run (args);
         }

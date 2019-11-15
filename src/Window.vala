@@ -32,6 +32,7 @@ using Lon.Controllers;
 using Lon.Views;
 
 namespace Lon {
+    public enum Temps {MILD_COLD, COLD, VERY_COLD, MILD_HOT, HOT, VERY_HOT}
 
     /**
      * Class responsible for creating the u window and will contain contain other widgets. 
@@ -49,6 +50,10 @@ namespace Lon {
          * @see style_provider
          * @see build
          */
+
+        public Gtk.HeaderBar hb;
+        public Gtk.Button lon;
+         
         public Window (Gtk.Application app) {
             Object (
                 application: app,
@@ -57,7 +62,14 @@ namespace Lon {
                 resizable: true
             );
 
-            
+            hb = new Gtk.HeaderBar();
+            hb.show_close_button = true;
+
+            lon = new Gtk.Button.with_label("lon");
+            lon.no_show_all = true;
+
+            hb.pack_start(lon);
+            this.set_titlebar(hb);
 
             var css_provider = new Gtk.CssProvider ();
             css_provider.load_from_resource (Constants.URL_CSS);

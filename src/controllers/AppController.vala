@@ -39,23 +39,52 @@ namespace Lon.Controllers {
     public class AppController {
 
         private Gtk.Application            application;
+        private WelcomeView                welcome_view;
         private AppView                    app_view;
-        private Gtk.ApplicationWindow      window { get; private set; default = null; }
+        private Lon.Window                 window { get; private set; default = null; }
+        private Gtk.Stack                  stack;
 
         /**
          * Constructs a new {@code AppController} object.
          */
         public AppController (Gtk.Application application) {
             this.application = application;
-            this.window = new Window (this.application);
-            this.app_view = new AppView ();
+            window = new Window (this.application);
+            welcome_view = new WelcomeView();
+            app_view = new AppView ();
 
-            this.window.add (this.app_view);
-            this.window.set_default_size (800, 640);
-            this.window.set_size_request (800, 640);
+            stack = new Gtk.Stack();
+            stack.transition_type = Gtk.StackTransitionType.SLIDE_UP_DOWN;
+
+            stack.add_named(welcome_view, "welcome_view");
+            stack.add_named(app_view, "app_view");
+
+            welcome_view.entry.activate.connect(() => {
+                if (welcome_view.entry.location != null) {
+                    app_view.loc = welcome_view.entry.location;
+                    app_view.start_polling();
+                    stack.set_visible_child_name("app_view");
+                    app_view.active = true;
+                }
+                window.lon.show();
+                window.lon.clicked.connect(() => {
+                    stack.set_visible_child_name("welcome_view");
+                    app_view.active = false;
+                    app_view.clear_window_colour();
+                    window.lon.hide();
+                });
+            });
+
+            window.add (stack);
+
+            window.set_default_size (800, 640);
             this.application.add_window (window);
 
             Gtk.Settings.get_default ().set ("gtk-application-prefer-dark-theme", true);
+            Gtk.Settings.get_default ().set ("gtk-theme-name", "Adwaita");
+            Gtk.Settings.get_default ().set ("gtk-icon-theme-name", "Adwaita");
+            Gtk.Settings.get_default ().set ("gtk-font-name", "Cantarell 11");
+            Gtk.Settings.get_default ().set ("gtk-decoration-layout", ":close");
         }
 
         public void activate () {
