@@ -11,9 +11,12 @@
         <binary>com.github.Appadeia.lon</binary>
     </provides>
     <screenshots>
-        <screenshot type="default">
-            <image>{{ screenshot-url }}</image>
-        </screenshot>
+      <screenshot type="default">
+          <image>https://github.com/Pali-Pona/lon/raw/master/data/lon-home.png</image>
+      </screenshot>
+      <screenshot type="default">
+          <image>https://github.com/Pali-Pona/lon/raw/master/data/lon-weather.png</image>
+      </screenshot>
     </screenshots>
     <description>
         <p></p>
