@@ -1,9 +1,9 @@
 {
     "app-id" : "com.github.Appadeia.lon",
     "runtime" : "org.gnome.Platform",
-    "runtime-version" : "3.28",
+    "runtime-version" : "3.34",
     "sdk" : "org.gnome.Sdk",
-    "command" : "builder-test",
+    "command" : "com.github.Appadeia.lon",
     "finish-args" : [
         "--share=network",
         "--share=ipc",
@@ -33,6 +33,48 @@
         "*.a"
     ],
     "modules" : [
+        {
+            "name": "geocode-glib",
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/geocode-glib/3.26/geocode-glib-3.26.1.tar.xz",
+                    "sha256": "5baa6ab76a76c9fc567e4c32c3af2cd1d1784934c255bc5a62c512e6af6bde1c"
+                }
+            ]
+        },
+        {
+            "name": "libgweather",
+            "buildsystem": "meson",
+            "config-opts": ["-Denable-vala=true"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://gitlab.gnome.org/GNOME/libgweather.git",
+                    "commit": "e93a119cb218b9c5f0f16fde54f7389d41f31ee1"
+                }
+            ]
+        },
+        {
+            "name" : "libhandy",
+            "buildsystem" : "meson",
+            "config-opts" : [
+                "-Dprofiling=false",
+                "-Dintrospection=enabled",
+                "-Dgtk_doc=false",
+                "-Dtests=false",
+                "-Dexamples=false",
+                "-Dvapi=true",
+                "-Dglade_catalog=disabled"
+            ],
+            "sources" : [
+                {
+                    "type" : "git",
+                    "url" : "https://source.puri.sm/Librem5/libhandy.git"
+                }
+            ]
+        },
         {
             "name" : "Lon",
             "buildsystem" : "meson",
